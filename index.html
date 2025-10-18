@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Барыга Педальная 🚲</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      background: url('bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ffcc00;
+      text-shadow: 0 0 20px #ff0000;
+      margin-top: 40px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 20px auto;
+      max-width: 650px;
+      line-height: 1.6;
+      text-shadow: 0 0 10px #000;
+    }
+
+    /* 🚲 Фото с анимацией */
+    .photo-container {
+      position: relative;
+      display: inline-block;
+      margin: 30px auto;
+      animation: slideIn 2.5s ease forwards;
+      opacity: 0;
+    }
+
+    .photo-container img {
+      width: 320px;
+      max-width: 90%;
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateX(-120%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    /* 🌟 Фейерверки */
+    .firework {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #ff0;
+      border-radius: 50%;
+      opacity: 0;
+      animation: explode 1.5s ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(0.2) translate(0, 0); opacity: 1; }
+      100% { transform: scale(1) translate(var(--x), var(--y)); opacity: 0; }
+    }
+
+    /* 🌈 Кнопка */
+    .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      background: linear-gradient(45deg, #00ff88, #00ccff, #ff00ff, #ff6600);
+      background-size: 300% 300%;
+      color: white;
+      font-size: 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      margin-top: 25px;
+      animation: glow 2s infinite alternate, gradient 4s infinite linear;
+      box-shadow: 0 0 20px #ff00ff;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 15px #ff00ff; }
+      50% { box-shadow: 0 0 30px #00ff88; }
+      100% { box-shadow: 0 0 15px #00ccff; }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* 📱 Адаптация */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8em; }
+      p { font-size: 1em; padding: 0 15px; }
+      .photo-container img { width: 220px; }
+      .btn { font-size: 18px; padding: 12px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🚴‍♂️ Всем привет! Я — Барыга Педальная</h1>
+  <p>
+    Ваш личный эксперт по велосипедам и электро-транспорту ⚡<br>
+    🚲 Хотите горный байк для приключений? Или лёгкий городской велосипед для поездок на работу?<br>
+    А может электровел с мощным мотором, чтобы летать как ракета 🚀?<br>
+    У меня есть всё! Подберу под любой бюджет и стиль. Велозапчасти, аксессуары, электродетали — всё под ключ 🔧⚡
+  </p>
+
+  <!-- 📸 Фото с анимацией -->
+  <div class="photo-container" id="photo">
+    <img src="bariga.png" alt="Барыга Педальная">
+  </div>
+
+  <!-- 🔘 Кнопка -->
+  <br>
+  <a href="https://t.me/inzigoni" class="btn">👉 Написать мне 👈</a>
+
+  <script>
+    // 🎆 Фейерверки вокруг фото
+    const container = document.getElementById('photo');
+    function createFirework() {
+      const fw = document.createElement('div');
+      fw.className = 'firework';
+      fw.style.setProperty('--x', `${(Math.random() - 0.5) * 300}px`);
+      fw.style.setProperty('--y', `${(Math.random() - 0.5) * 300}px`);
+      fw.style.left = '50%';
+      fw.style.top = '50%';
+      container.appendChild(fw);
+      setTimeout(() => fw.remove(), 1500);
+    }
+    setInterval(createFirework, 500);
+  </script>
+</body>
+</html>
