@@ -4,34 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Барыга Педальная 🚲</title>
+
+  <!-- Шрифт Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-      color: white;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
       text-align: center;
-      background: url('bg.jpg') no-repeat center center fixed;
-      background-size: cover;
       overflow-x: hidden;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    /* 🌈 Анимация фона */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
     }
 
     h1 {
-      font-size: 2.5em;
-      color: #ffcc00;
-      text-shadow: 0 0 20px #ff0000;
-      margin-top: 40px;
+      font-size: 3em;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #ffcc00, #ff6600, #ff0099);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    h2 {
+      font-size: 1.6em;
+      font-weight: 400;
+      margin-bottom: 30px;
+      color: #ddd;
+      animation: fadeIn 2.5s ease forwards;
     }
 
     p {
-      font-size: 1.2em;
-      margin: 20px auto;
-      max-width: 650px;
-      line-height: 1.6;
-      text-shadow: 0 0 10px #000;
+      font-size: 1.1em;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+      color: #eee;
+      animation: fadeIn 3s ease forwards;
     }
 
-    /* 🚲 Фото с анимацией */
+    /* 🚲 Фото */
     .photo-container {
       position: relative;
       display: inline-block;
@@ -43,96 +77,70 @@
     .photo-container img {
       width: 320px;
       max-width: 90%;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(255,0,150,0.6);
     }
 
     @keyframes slideIn {
-      0% { transform: translateX(-120%); opacity: 0; }
-      100% { transform: translateX(0); opacity: 1; }
+      0% { transform: translateX(-120%) scale(0.9); opacity: 0; }
+      100% { transform: translateX(0) scale(1); opacity: 1; }
     }
 
-    /* 🌟 Фейерверки */
-    .firework {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: #ff0;
-      border-radius: 50%;
-      opacity: 0;
-      animation: explode 1.5s ease-out forwards;
-    }
-
-    @keyframes explode {
-      0% { transform: scale(0.2) translate(0, 0); opacity: 1; }
-      100% { transform: scale(1) translate(var(--x), var(--y)); opacity: 0; }
-    }
-
-    /* 🌈 Кнопка */
+    /* 🔘 Кнопка */
     .btn {
       display: inline-block;
-      padding: 15px 35px;
-      background: linear-gradient(45deg, #00ff88, #00ccff, #ff00ff, #ff6600);
-      background-size: 300% 300%;
-      color: white;
-      font-size: 22px;
-      border-radius: 12px;
+      padding: 16px 40px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(45deg, #ff6600, #ff0099);
+      border-radius: 50px;
       text-decoration: none;
       margin-top: 25px;
-      animation: glow 2s infinite alternate, gradient 4s infinite linear;
-      box-shadow: 0 0 20px #ff00ff;
+      box-shadow: 0 5px 25px rgba(255, 0, 150, 0.5);
+      transition: 0.3s ease;
+      animation: fadeIn 3.5s ease forwards;
     }
 
-    @keyframes glow {
-      0% { box-shadow: 0 0 15px #ff00ff; }
-      50% { box-shadow: 0 0 30px #00ff88; }
-      100% { box-shadow: 0 0 15px #00ccff; }
+    .btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 30px rgba(255, 102, 0, 0.7);
     }
 
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    /* Анимации плавного появления */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 📱 Адаптация */
-    @media (max-width: 600px) {
-      h1 { font-size: 1.8em; }
-      p { font-size: 1em; padding: 0 15px; }
-      .photo-container img { width: 220px; }
-      .btn { font-size: 18px; padding: 12px 22px; }
+    /* 📱 Мобильная адаптация */
+    @media (max-width: 768px) {
+      h1 { font-size: 2em; }
+      h2 { font-size: 1.2em; }
+      p { font-size: 1em; padding: 0 10px; }
+      .photo-container img { width: 240px; }
+      .btn { font-size: 18px; padding: 14px 25px; }
     }
   </style>
 </head>
 <body>
-  <h1>🚴‍♂️ Всем привет! Я — Барыга Педальная</h1>
-  <p>
-    Ваш личный эксперт по велосипедам и электро-транспорту ⚡<br>
-    🚲 Хотите горный байк для приключений? Или лёгкий городской велосипед для поездок на работу?<br>
-    А может электровел с мощным мотором, чтобы летать как ракета 🚀?<br>
-    У меня есть всё! Подберу под любой бюджет и стиль. Велозапчасти, аксессуары, электродетали — всё под ключ 🔧⚡
-  </p>
+  <div class="overlay">
+    <h1>🚲 Всем привет! Я — Барыга Педальная</h1>
+    <h2>Ваш личный эксперт по велосипедам и электро-транспорту ⚡</h2>
+    <p>
+      Хотите горный байк для приключений? Или лёгкий городской велосипед для поездок на работу?<br>
+      А может электровел с мощным мотором, чтобы летать как ракета 🚀?<br>
+      У меня есть всё! Подберу под любой бюджет, вкус и стиль.<br>
+      Велозапчасти, аксессуары, электродетали — всё под ключ 🔧⚡
+    </p>
 
-  <!-- 📸 Фото с анимацией -->
-  <div class="photo-container" id="photo">
-    <img src="bariga.png" alt="Барыга Педальная">
+    <!-- Фото -->
+    <div class="photo-container">
+      <img src="bariga.png" alt="Барыга Педальная">
+    </div>
+
+    <!-- Кнопка -->
+    <a href="https://t.me/inzigoni" class="btn">👉 Написать мне 👈</a>
   </div>
-
-  <!-- 🔘 Кнопка -->
-  <br>
-  <a href="https://t.me/inzigoni" class="btn">👉 Написать мне 👈</a>
-
-  <script>
-    // 🎆 Фейерверки вокруг фото
-    const container = document.getElementById('photo');
-    function createFirework() {
-      const fw = document.createElement('div');
-      fw.className = 'firework';
-      fw.style.setProperty('--x', `${(Math.random() - 0.5) * 300}px`);
-      fw.style.setProperty('--y', `${(Math.random() - 0.5) * 300}px`);
-      fw.style.left = '50%';
-      fw.style.top = '50%';
-      container.appendChild(fw);
-      setTimeout(() => fw.remove(), 1500);
-    }
-    setInterval(createFirework, 500);
-  </script>
 </body>
 </html>
